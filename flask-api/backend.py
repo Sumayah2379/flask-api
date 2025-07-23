@@ -6,6 +6,11 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 CORS(app)
 
+# ✅ Root path to avoid 404 on Render
+@app.route('/')
+def home():
+    return "✅ Flask API is up and running!"
+
 client = MongoClient("mongodb://localhost:27017/")
 db = client["userdb"]
 collection = db["users"]
